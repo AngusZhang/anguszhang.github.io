@@ -20,32 +20,33 @@
     var CONFIG = {"hostname":"anguszhang.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java后台开发，分享自己项目中的问题，记录自己并尽所能为同行们提供点滴的经验">
-<meta name="keywords" content="编程,后台开发,java,spring,mysql">
-<meta property="og:type" content="website">
-<meta property="og:title" content="码怪_在编程路上">
-<meta property="og:url" content="http://anguszhang.github.io/index.html">
+  <meta name="description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
+<meta name="keywords" content="Spring,Spring Boot,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
+<meta property="og:url" content="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/index.html">
 <meta property="og:site_name" content="码怪_在编程路上">
-<meta property="og:description" content="Java后台开发，分享自己项目中的问题，记录自己并尽所能为同行们提供点滴的经验">
+<meta property="og:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-20T03:28:42.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="码怪_在编程路上">
-<meta name="twitter:description" content="Java后台开发，分享自己项目中的问题，记录自己并尽所能为同行们提供点滴的经验">
+<meta name="twitter:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
+<meta name="twitter:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
 
-<link rel="canonical" href="http://anguszhang.github.io/">
+<link rel="canonical" href="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>码怪_在编程路上</title>
+  <title>将应用从 Spring 4 迁移到 Spring Boot 2 | 码怪_在编程路上</title>
   
 
 
@@ -143,9 +144,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
@@ -161,10 +163,9 @@
       <meta itemprop="name" content="码怪_在编程路上">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/" class="post-title-link" itemprop="url">将应用从 Spring 4 迁移到 Spring Boot 2</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          将应用从 Spring 4 迁移到 Spring Boot 2
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -203,7 +204,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 <strong>SpringBoot</strong>，为之后的服务化做准备。</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 <strong>SpringBoot</strong>，为之后的服务化做准备。</p>
 <h1 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h1><p>旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 <strong>2.1.17RELEASE</strong>，SpringFramework 版本定在 <strong>5.1.18.RELEASE</strong>。</p>
 <p>以上的版本仅供参考，具体的版本选择需要根据具体情况而定。</p>
 <h1 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h1><h2 id="Step1-添加-maven-引用"><a href="#Step1-添加-maven-引用" class="headerlink" title="Step1 添加 maven 引用"></a>Step1 添加 maven 引用</h2><h3 id="parent引入"><a href="#parent引入" class="headerlink" title="parent引入"></a>parent引入</h3><p>如果项目本身没有 parent 可以直接引入 <em>spring-boot-starter-parent</em>，如下：</p>
@@ -296,21 +297,28 @@ public void addInterceptors(InterceptorRegistry registry) {
 </ol>
 <p>放手去做，会有好结果的。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -363,6 +371,7 @@ public void addInterceptors(InterceptorRegistry registry) {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版本"><span class="nav-number">2.</span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迁移过程"><span class="nav-number">3.</span> <span class="nav-text">迁移过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-添加-maven-引用"><span class="nav-number">3.1.</span> <span class="nav-text">Step1 添加 maven 引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parent引入"><span class="nav-number">3.1.1.</span> <span class="nav-text">parent引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-spring-boot-maven-plugin"><span class="nav-number">3.1.2.</span> <span class="nav-text">配置 spring-boot-maven-plugin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-去掉-XML-配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">Step2 去掉 XML 配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#替换-web-xml"><span class="nav-number">3.2.1.</span> <span class="nav-text">替换 web.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换-spring-context-xml"><span class="nav-number">3.2.2.</span> <span class="nav-text">替换 spring-context.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-解决包冲突"><span class="nav-number">3.3.</span> <span class="nav-text">Step3 解决包冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
