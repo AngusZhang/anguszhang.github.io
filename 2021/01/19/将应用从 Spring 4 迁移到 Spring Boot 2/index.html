@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"anguszhang.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
+  <meta name="description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 <meta name="keywords" content="Spring,Spring Boot,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
 <meta property="og:url" content="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/index.html">
 <meta property="og:site_name" content="码怪_在编程路上">
-<meta property="og:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
+<meta property="og:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-20T03:28:42.702Z">
+<meta property="og:updated_time" content="2021-01-20T06:02:45.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
-<meta name="twitter:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17RELEASE，Spr">
+<meta name="twitter:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 
 <link rel="canonical" href="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
 
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-20 11:28:42" itemprop="dateModified" datetime="2021-01-20T11:28:42+08:00">2021-01-20</time>
+                <time title="Modified: 2021-01-20 14:02:45" itemprop="dateModified" datetime="2021-01-20T14:02:45+08:00">2021-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -205,11 +205,11 @@
 
       
         <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 <strong>SpringBoot</strong>，为之后的服务化做准备。</p>
-<h1 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h1><p>旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 <strong>2.1.17RELEASE</strong>，SpringFramework 版本定在 <strong>5.1.18.RELEASE</strong>。</p>
+<h1 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h1><p>旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 <strong>2.1.17.RELEASE</strong>，SpringFramework 版本定在 <strong>5.1.18.RELEASE</strong>。</p>
 <p>以上的版本仅供参考，具体的版本选择需要根据具体情况而定。</p>
 <h1 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h1><h2 id="Step1-添加-maven-引用"><a href="#Step1-添加-maven-引用" class="headerlink" title="Step1 添加 maven 引用"></a>Step1 添加 maven 引用</h2><h3 id="parent引入"><a href="#parent引入" class="headerlink" title="parent引入"></a>parent引入</h3><p>如果项目本身没有 parent 可以直接引入 <em>spring-boot-starter-parent</em>，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.1.17.RELEASE&lt;/version&gt;</span><br><span class="line">	&lt;relativePath&gt;&lt;/relativePath&gt;</span><br><span class="line">&lt;/parent&gt;</span><br></pre></td></tr></table></figure>
-<p>如果项目本身有其他 parent 需要引入的话可以使用在 <em>dependencyManagement</em> 中添加 <em>spring-boot-dependencies</em> 的方式，如下：</p>
+<p>如果项目本身有其他 parent 需要引入的话可以在 <em>dependencyManagement</em> 中添加 <em>spring-boot-dependencies</em>，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;$&#123;springboot.version&#125;&lt;/version&gt;</span><br><span class="line">		&lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">		&lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">	&lt;/dependency&gt;</span><br><span class="line"> 	...</span><br><span class="line">&lt;/dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="配置-spring-boot-maven-plugin"><a href="#配置-spring-boot-maven-plugin" class="headerlink" title="配置 spring-boot-maven-plugin"></a>配置 spring-boot-maven-plugin</h3><p><em>spring-boot-maven-plugin</em> 是 SpringBoot 的打包插件，配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
@@ -232,62 +232,69 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class MyApplication extends SpringBootServletInitializer &#123;    </span><br><span class="line">    @Override</span><br><span class="line">    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) &#123;</span><br><span class="line">        return builder.sources(MyApplication.class);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(MyApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="替换-spring-context-xml"><a href="#替换-spring-context-xml" class="headerlink" title="替换 spring-context.xml"></a>替换 spring-context.xml</h3><ul>
 <li><p>Spring Bean 配置</p>
-<p>以 JdbcTemplate 为例，所有的 <bean> 配置可以使用如下方式定义：</bean></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public JdbcTemplate jdbcTemplate(DataSource dataSource) &#123;</span><br><span class="line">    return new JdbcTemplate(dataSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BasePackage 配置</p>
-<p>在<code>SpringBootApplication</code>注解中加上<code>scanBasePackages</code>配置即可。如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(scanBasePackages = &#123;&quot;tech.maguai&quot;&#125;)</span><br><span class="line">public class MyApplication extends SpringBootServletInitializer &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>AOP 配置</p>
-<p>首先我们得开启 AspectJ，在MainClass上添加注解<code>@EnableAspectJAutoProxy(proxyTargetClass = true)</code></p>
-<p>定义事务切面的方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Configuration</span><br><span class="line">public class TxAdviceConfig &#123;</span><br><span class="line">        private static final String AOP_POINTCUT_EXPRESSION = &quot;execution(* tech.maguai..*.service..*.*(..))&quot;;</span><br><span class="line">        /**</span><br><span class="line">          * 定义 transactionManager</span><br><span class="line">          */</span><br><span class="line">        @Bean</span><br><span class="line">        public PlatformTransactionManager transactionManager(DataSource dataSource) &#123;</span><br><span class="line">            return new DataSourceTransactionManager(dataSource);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        @Bean</span><br><span class="line">        public Advisor txAdvice(PlatformTransactionManager transactionManager) &#123;</span><br><span class="line">            AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();</span><br><span class="line">            pointcut.setExpression(AOP_POINTCUT_EXPRESSION);</span><br><span class="line">        </span><br><span class="line">            NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();</span><br><span class="line">            RuleBasedTransactionAttribute requiredTx = new RuleBasedTransactionAttribute();</span><br><span class="line">            requiredTx.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));</span><br><span class="line">            requiredTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);</span><br><span class="line">            Map&lt;String, TransactionAttribute&gt; txMap = new HashMap&lt;&gt;(3);</span><br><span class="line">            txMap.put(&quot;insert*&quot;, requiredTx);</span><br><span class="line">            txMap.put(&quot;update*&quot;, requiredTx);</span><br><span class="line">            txMap.put(&quot;delete*&quot;, requiredTx);</span><br><span class="line">            source.setNameMap(txMap);</span><br><span class="line">            TransactionInterceptor transactionInterceptor = new TransactionInterceptor(transactionManager, source);</span><br><span class="line">            return new DefaultPointcutAdvisor(pointcut, transactionInterceptor);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  定义普通切面的方式如下：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class MyAspect &#123;</span><br><span class="line"></span><br><span class="line">    @Pointcut(&quot;execution(public * tech.maguai..*.controller..*.*(..))&quot;)</span><br><span class="line">    public void myPointCut() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before(&quot;myPointCut()&quot;)</span><br><span class="line">    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">		doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	``` </span><br><span class="line">这里以`@Before`为例，有其他需求可以参考文档。</span><br><span class="line"></span><br><span class="line">* MVC 配置</span><br><span class="line"></span><br><span class="line">	配置 MVC 需要实现 `WebMvcConfigurer` 接口，然后通过实现接口的一些方法，设置 MVC 相关的配置，可能用到的方法如下：</span><br><span class="line"> 	* 设置 `HttpMessageConverter`</span><br><span class="line"> 		</span><br><span class="line">		`public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 设置 `HandlerMethodArgumentResolver`</span><br><span class="line"> 	</span><br><span class="line"> 		`public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 注册静态资源 `addResourceHandlers`</span><br><span class="line">		</span><br><span class="line">		`public void addResourceHandlers(ResourceHandlerRegistry registry)`</span><br><span class="line">		</span><br><span class="line"> 	* 添加 `Interceptor` </span><br><span class="line"> 		</span><br><span class="line"> 		`public void addInterceptors(InterceptorRegistry registry)`</span><br><span class="line"> 		</span><br><span class="line">	例：</span><br></pre></td></tr></table></figure>
-<p>  @Configuration<br>  @EnableWebMvc<br>  public class WebMvcConfig implements WebMvcConfigurer {</p>
-<pre><code>@Autowired
-private MyInterceptor myInterceptor;
-
-/**
- * fastjson convert配置
- */
-@Override
-public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
-    FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-    fastJsonHttpMessageConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON_UTF8));
-    converters.add(fastJsonHttpMessageConverter);
-}
-
-/**
- * 对controller参数做些处理
- */
-@Override
-public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers) {
-    MyControllerMethodArgumentResolver myControllerMethodArgumentResolver = new MyControllerMethodArgumentResolver();
-    resolvers.add(myControllerMethodArgumentResolver);
-}
-
-/**
- * 静态资源
- */
-@Override
-public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler(&quot;/*.js&quot;).addResourceLocations(&quot;classpath:/mystatic/&quot;);
-}
-
-/**
- * 注册Interceptor
- */
-@Override
-public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(myInterceptor).addPathPatterns(&quot;/path/**&quot;);
-}
-</code></pre><p>  }</p>
-<p>  <code>`</code></p>
+<p>以 JdbcTemplate 为例，所有的 \&lt;bean> 配置可以使用如下方式定义：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public JdbcTemplate jdbcTemplate(DataSource dataSource) &#123;</span><br><span class="line">		return new JdbcTemplate(dataSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="Step3-解决包冲突"><a href="#Step3-解决包冲突" class="headerlink" title="Step3 解决包冲突"></a>Step3 解决包冲突</h2><p>包冲突的问题解决起来比较繁琐，需要我们有足够的耐心，慢慢来问题总是可以解决的。过多的细节这里就不再赘述，大致思路就是通过<code>mvn  dependency:tree</code>或者其他工具进行依赖分析后，找到冲突的包之后使用<code>&lt;exclude&gt;</code>排除冲突。</p>
+<ul>
+<li><p>basePackage 配置</p>
+<p>在<code>SpringBootApplication</code>注解中加上<code>scanBasePackages</code>配置即可。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(scanBasePackages = &#123;&quot;tech.maguai&quot;&#125;)</span><br><span class="line">public class MyApplication extends SpringBootServletInitializer &#123;</span><br><span class="line">   	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AOP 配置</p>
+<p>首先我们需要开启 AspectJ：在MainClass上添加注解<br>  <code>@EnableAspectJAutoProxy(proxyTargetClass = true)</code>即可。</p>
+<p>定义事务切面的方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Configuration</span><br><span class="line">public class TxAdviceConfig &#123;</span><br><span class="line">        private static final String AOP_POINTCUT_EXPRESSION = &quot;execution(* tech.maguai..*.service..*.*(..))&quot;;</span><br><span class="line">        /**</span><br><span class="line">         * 定义 transactionManager</span><br><span class="line">         */</span><br><span class="line">        @Bean</span><br><span class="line">        public PlatformTransactionManager transactionManager(DataSource dataSource) &#123;</span><br><span class="line">            return new DataSourceTransactionManager(dataSource);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        @Bean</span><br><span class="line">        public Advisor txAdvice(PlatformTransactionManager transactionManager) &#123;</span><br><span class="line">            AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();</span><br><span class="line">            pointcut.setExpression(AOP_POINTCUT_EXPRESSION);</span><br><span class="line">        </span><br><span class="line">            NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();</span><br><span class="line">            RuleBasedTransactionAttribute requiredTx = new RuleBasedTransactionAttribute();</span><br><span class="line">            requiredTx.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));</span><br><span class="line">            requiredTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);</span><br><span class="line">            Map&lt;String, TransactionAttribute&gt; txMap = new HashMap&lt;&gt;(3);</span><br><span class="line">            txMap.put(&quot;insert*&quot;, requiredTx);</span><br><span class="line">            txMap.put(&quot;update*&quot;, requiredTx);</span><br><span class="line">            txMap.put(&quot;delete*&quot;, requiredTx);</span><br><span class="line">            source.setNameMap(txMap);</span><br><span class="line">            TransactionInterceptor transactionInterceptor = new TransactionInterceptor(transactionManager, source);</span><br><span class="line">            return new DefaultPointcutAdvisor(pointcut, transactionInterceptor);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p> 定义普通切面的方式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class MyAspect &#123;</span><br><span class="line"></span><br><span class="line">    @Pointcut(&quot;execution(public * tech.maguai..*.controller..*.*(..))&quot;)</span><br><span class="line">    public void myPointCut() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before(&quot;myPointCut()&quot;)</span><br><span class="line">    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">		doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> ``` </span><br><span class="line">这里以`@Before`为例，有其他需求可以参考文档。</span><br><span class="line"></span><br><span class="line">* MVC 配置</span><br><span class="line"></span><br><span class="line">	配置 MVC 需要实现 `WebMvcConfigurer` 接口，然后通过实现接口的一些方法，设置 MVC 相关的配置，可能用到的方法如下：</span><br><span class="line"> 	* 设置 `HttpMessageConverter`</span><br><span class="line"> 		</span><br><span class="line">		`public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 设置 `HandlerMethodArgumentResolver`</span><br><span class="line"> 	</span><br><span class="line"> 		`public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 注册静态资源 `addResourceHandlers`</span><br><span class="line">		</span><br><span class="line">		`public void addResourceHandlers(ResourceHandlerRegistry registry)`</span><br><span class="line">		</span><br><span class="line"> 	* 添加 `Interceptor` </span><br><span class="line"> 		</span><br><span class="line"> 		`public void addInterceptors(InterceptorRegistry registry)`</span><br><span class="line"> 		</span><br><span class="line">	例：</span><br></pre></td></tr></table></figure>
+<pre><code>@Configuration
+@EnableWebMvc
+public class WebMvcConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private MyInterceptor myInterceptor;
+
+    /**
+     * fastjson convert配置
+     */
+    @Override
+    public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON_UTF8));
+        converters.add(fastJsonHttpMessageConverter);
+    }
+
+    /**
+     * 对controller参数做些处理
+     */
+    @Override
+    public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers) {
+        MyControllerMethodArgumentResolver myControllerMethodArgumentResolver = new MyControllerMethodArgumentResolver();
+        resolvers.add(myControllerMethodArgumentResolver);
+    }
+
+    /**
+     * 静态资源
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(&quot;/*.js&quot;).addResourceLocations(&quot;classpath:/mystatic/&quot;);
+    }
+
+    /**
+     * 注册Interceptor
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(myInterceptor).addPathPatterns(&quot;/path/**&quot;);
+    }
+
+}
+
+```
+</code></pre><h2 id="Step3-解决包冲突"><a href="#Step3-解决包冲突" class="headerlink" title="Step3 解决包冲突"></a>Step3 解决包冲突</h2><p>包冲突的问题解决起来比较繁琐，需要我们有足够的耐心，慢慢来问题总是可以解决的。过多的细节这里就不再赘述，大致思路就是通过<code>mvn  dependency:tree</code>或者其他工具进行依赖分析后，找到冲突的包之后使用<code>&lt;exclude&gt;</code>排除冲突。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文总结了一下笔者迁移到 SpringBoot 时的大致流程，写这篇文章的时候服务已经上线两个多月，运行正常。相信还有很多朋友们的应用由于各种原因仍然使用着比较老的框架（不仅限于Spring）</p>
 <ol>
 <li>选择合适的版本减少改造既有工程的代价</li>
