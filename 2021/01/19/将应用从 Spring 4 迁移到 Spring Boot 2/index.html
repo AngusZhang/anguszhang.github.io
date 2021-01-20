@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="码怪_在编程路上">
 <meta property="og:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-20T06:32:43.694Z">
+<meta property="og:updated_time" content="2021-01-20T06:34:40.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
 <meta name="twitter:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-20 14:32:43" itemprop="dateModified" datetime="2021-01-20T14:32:43+08:00">2021-01-20</time>
+                <time title="Modified: 2021-01-20 14:34:40" itemprop="dateModified" datetime="2021-01-20T14:34:40+08:00">2021-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,53 +248,30 @@
 </li>
 </ul>
 <p> 定义普通切面的方式如下：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">@Component</span><br><span class="line">public class MyAspect &#123;</span><br><span class="line">	    @Pointcut(&quot;execution(public * tech.maguai..*.controller..*.*(..))&quot;)</span><br><span class="line">	    public void myPointCut() &#123;</span><br><span class="line">	    &#125;</span><br><span class="line">	</span><br><span class="line">	    @Before(&quot;myPointCut()&quot;)</span><br><span class="line">	    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">			doSomething();</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> ``` </span><br><span class="line"></span><br><span class="line"> 这里以`@Before`为例，有其他需求可以参考文档。</span><br><span class="line"></span><br><span class="line">* MVC 配置</span><br><span class="line"></span><br><span class="line">	配置 MVC 需要实现 `WebMvcConfigurer` 接口，然后通过实现接口的一些方法，设置 MVC 相关的配置，可能用到的方法如下：</span><br><span class="line"> 	* 设置 `HttpMessageConverter`</span><br><span class="line"> 		</span><br><span class="line">		`public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 设置 `HandlerMethodArgumentResolver`</span><br><span class="line"> 	</span><br><span class="line"> 		`public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers)`</span><br><span class="line"> 		</span><br><span class="line"> 	* 注册静态资源 `addResourceHandlers`</span><br><span class="line">		</span><br><span class="line">		`public void addResourceHandlers(ResourceHandlerRegistry registry)`</span><br><span class="line">		</span><br><span class="line"> 	* 添加 `Interceptor` </span><br><span class="line"> 		</span><br><span class="line"> 		`public void addInterceptors(InterceptorRegistry registry)`</span><br><span class="line"> 		</span><br><span class="line">	例：</span><br></pre></td></tr></table></figure>
-<pre><code>@Configuration
-@EnableWebMvc
-public class WebMvcConfig implements WebMvcConfigurer {
-
-    @Autowired
-    private MyInterceptor myInterceptor;
-
-    /**
-     * fastjson convert配置
-     */
-    @Override
-    public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
-        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-        fastJsonHttpMessageConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON_UTF8));
-        converters.add(fastJsonHttpMessageConverter);
-    }
-
-    /**
-     * 对controller参数做些处理
-     */
-    @Override
-    public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers) {
-        MyControllerMethodArgumentResolver myControllerMethodArgumentResolver = new MyControllerMethodArgumentResolver();
-        resolvers.add(myControllerMethodArgumentResolver);
-    }
-
-    /**
-     * 静态资源
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(&quot;/*.js&quot;).addResourceLocations(&quot;classpath:/mystatic/&quot;);
-    }
-
-    /**
-     * 注册Interceptor
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(myInterceptor).addPathPatterns(&quot;/path/**&quot;);
-    }
-
-}
-
-```
-</code></pre><h2 id="Step3-解决包冲突"><a href="#Step3-解决包冲突" class="headerlink" title="Step3 解决包冲突"></a>Step3 解决包冲突</h2><p>包冲突的问题解决起来比较繁琐，需要我们有足够的耐心，慢慢来问题总是可以解决的。过多的细节这里就不再赘述，大致思路就是通过<code>mvn  dependency:tree</code>或者其他工具进行依赖分析后，找到冲突的包之后使用<code>&lt;exclude&gt;</code>排除冲突。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAspect</span> </span>&#123;</span><br><span class="line">	    <span class="meta">@Pointcut</span>(<span class="string">"execution(public * tech.maguai..*.controller..*.*(..))"</span>)</span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myPointCut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    &#125;</span><br><span class="line">	</span><br><span class="line">	    <span class="meta">@Before</span>(<span class="string">"myPointCut()"</span>)</span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doBefore</span><span class="params">(JoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">			doSomething();</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 这里以<code>@Before</code>为例，有其他需求可以参考文档。</p>
+<ul>
+<li><p>MVC 配置</p>
+<p>  配置 MVC 需要实现 <code>WebMvcConfigurer</code> 接口，然后通过实现接口的一些方法，设置 MVC 相关的配置，可能用到的方法如下：</p>
+<ul>
+<li><p>设置 <code>HttpMessageConverter</code></p>
+<p> <code>public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</code></p>
+</li>
+<li><p>设置 <code>HandlerMethodArgumentResolver</code></p>
+<p>  <code>public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers)</code></p>
+</li>
+<li><p>注册静态资源 <code>addResourceHandlers</code></p>
+<p> <code>public void addResourceHandlers(ResourceHandlerRegistry registry)</code></p>
+</li>
+<li><p>添加 <code>Interceptor</code> </p>
+<p>  <code>public void addInterceptors(InterceptorRegistry registry)</code></p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableWebMvc</span><br><span class="line">public class WebMvcConfig implements WebMvcConfigurer &#123;</span><br><span class="line">    </span><br><span class="line">    @Autowired</span><br><span class="line">    private MyInterceptor myInterceptor;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * fastjson convert配置</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) &#123;</span><br><span class="line">        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();</span><br><span class="line">        fastJsonHttpMessageConverter.setSupportedMediaTypes(Lists.newArrayList(MediaType.TEXT_HTML, MediaType.APPLICATION_JSON_UTF8));</span><br><span class="line">        converters.add(fastJsonHttpMessageConverter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 对controller参数做些处理</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; resolvers) &#123;</span><br><span class="line">        MyControllerMethodArgumentResolver myControllerMethodArgumentResolver = new MyControllerMethodArgumentResolver();</span><br><span class="line">        resolvers.add(myControllerMethodArgumentResolver);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 静态资源</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void addResourceHandlers(ResourceHandlerRegistry registry) &#123;</span><br><span class="line">        registry.addResourceHandler(&quot;/*.js&quot;).addResourceLocations(&quot;classpath:/mystatic/&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 注册Interceptor</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void addInterceptors(InterceptorRegistry registry) &#123;</span><br><span class="line">        registry.addInterceptor(myInterceptor).addPathPatterns(&quot;/path/**&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Step3-解决包冲突"><a href="#Step3-解决包冲突" class="headerlink" title="Step3 解决包冲突"></a>Step3 解决包冲突</h2><p>包冲突的问题解决起来比较繁琐，需要我们有足够的耐心，慢慢来问题总是可以解决的。过多的细节这里就不再赘述，大致思路就是通过<code>mvn  dependency:tree</code>或者其他工具进行依赖分析后，找到冲突的包之后使用<code>&lt;exclude&gt;</code>排除冲突。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文总结了一下笔者迁移到 SpringBoot 时的大致流程，写这篇文章的时候服务已经上线两个多月，运行正常。相信还有很多朋友们的应用由于各种原因仍然使用着比较老的框架（不仅限于Spring）</p>
 <ol>
 <li>选择合适的版本减少改造既有工程的代价</li>
