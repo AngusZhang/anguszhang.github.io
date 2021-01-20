@@ -17,14 +17,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"anguszhang.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"maguai.tech","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 <meta name="keywords" content="Spring,Spring Boot,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
-<meta property="og:url" content="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/index.html">
+<meta property="og:url" content="http://maguai.tech/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/index.html">
 <meta property="og:site_name" content="码怪_在编程路上">
 <meta property="og:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 <meta property="og:locale" content="zh-Hans">
@@ -33,7 +33,7 @@
 <meta name="twitter:title" content="将应用从 Spring 4 迁移到 Spring Boot 2">
 <meta name="twitter:description" content="背景随着业务规模逐渐扩大，项目需要向微服务架构转型，将现有应用迁移到 SpringBoot，为之后的服务化做准备。 版本旧项目使用的 Spring 版本为 4.3.x，刚开始迁移时选择了 SpringBoot 当时最新 2.3 版本，但是由于工程已经比较庞大，且引入了一些比较旧的三方包，导致版本兼容比较困难，在不断尝试下最终决定将 SpringBoot 版本定在 2.1.17.RELEASE，Sp">
 
-<link rel="canonical" href="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
+<link rel="canonical" href="http://maguai.tech/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
 
 
 <script id="page-configurations">
@@ -151,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://anguszhang.github.io/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
+    <link itemprop="mainEntityOfPage" href="http://maguai.tech/2021/01/19/将应用从 Spring 4 迁移到 Spring Boot 2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
